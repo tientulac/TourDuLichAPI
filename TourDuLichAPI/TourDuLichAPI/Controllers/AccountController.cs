@@ -112,6 +112,30 @@ namespace TourDuLichAPI.Controllers
 
         }
 
+        [HttpGet]
+        [Route("api/account/balance/{id}")]
+        public ResponseBase<double> Balance(int id = 0)
+        {
+            try
+            {
+                return new ResponseBase<double>()
+                {
+                    data = db.Accounts.Where(x => x.AccountId == id).FirstOrDefault().Balance.GetValueOrDefault(),
+                    message = "Success",
+                    status = 500
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseBase<double>()
+                {
+                    message = ex.Message,
+                    status = 500
+                };
+            }
+        }
+
+
         public static string createToken(string Username)
         {
             DateTime issuedAt = DateTime.UtcNow;
@@ -138,5 +162,7 @@ namespace TourDuLichAPI.Controllers
 
             return tokenString;
         }
+
+
     }
 }

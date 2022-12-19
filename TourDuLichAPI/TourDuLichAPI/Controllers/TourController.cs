@@ -73,5 +73,33 @@ namespace TourDuLichAPI.Controllers
                 status = 200
             };
         }
+
+        [HttpGet]
+        [Route("api/tour/detail/{id}")]
+        public ResponseBase<TourDTO> TourDetail(int id = 0)
+        {
+            var _tour = (from a in db.Tours.Where(x => x.TourId == id)
+                         select new TourDTO
+                         {
+                             TourId = a.TourId,
+                             TourName = a.TourName,
+                             StartDate = a.StartDate,
+                             EndDate = a.EndDate,
+                             TourTime = a.TourTime,
+                             LocationFrom = a.LocationFrom,
+                             LocationTo = a.LocationTo,
+                             Price = a.Price,
+                             Poster = a.Poster,
+                             Descrip = a.Descrip,
+                             VehicleId = a.VehicleId,
+                             VehicleName = db.Vehicles.Where(x => x.VehicleId == a.VehicleId).FirstOrDefault().VahicleName ?? "",
+                         }).FirstOrDefault();
+            return new ResponseBase<TourDTO>()
+            {
+                data = _tour,
+                message = "Success",
+                status = 200
+            };
+        }
     }
 }
