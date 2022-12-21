@@ -93,6 +93,7 @@ namespace TourDuLichAPI.Controllers
                              Descrip = a.Descrip,
                              VehicleId = a.VehicleId,
                              VehicleName = db.Vehicles.Where(x => x.VehicleId == a.VehicleId).FirstOrDefault().VahicleName ?? "",
+                             Schedule = db.TourSchedules.Where(x => x.TourId == a.TourId).FirstOrDefault()  ?? null
                          }).FirstOrDefault();
             return new ResponseBase<TourDTO>()
             {
