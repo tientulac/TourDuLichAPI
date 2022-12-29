@@ -38,5 +38,44 @@ namespace TourDuLichAPI.Controllers
                 status = 200
             };
         }
+
+        [HttpPost]
+        [Route("api/profile/updateProfile")]
+        public ResponseBase<bool> UpdateProfile(Customer req)
+        {
+            try
+            {
+                var cus = db.Customers.Where(x => x.CustomerId == req.CustomerId).FirstOrDefault();
+                if (cus.CustomerId > 0)
+                {
+                    cus.CustomerName = req.CustomerName;
+                    cus.DOB = req.DOB;
+                    cus.PassPortCode = req.PassPortCode;
+                    cus.Gender = req.Gender;
+                    cus.Address = req.Address;
+                    db.SubmitChanges();
+                    return new ResponseBase<bool>()
+                    {
+                        data = true,
+                        message = "Success",
+                        status = 200
+                    };
+                }
+                return new ResponseBase<bool>()
+                {
+                    data = false,
+                    message = "Not Found",
+                    status = 404
+                };
+            }
+            catch(Exception ex) {
+                return new ResponseBase<bool>()
+                {
+                    data = false,
+                    message = ex.Message,
+                    status = 500
+                };
+            }
+        }
     }
 }
