@@ -10,5 +10,6 @@ namespace TourDuLichAPI.Models.DTO
         public string VehicleName { get; set; }
         public List<TourSchedule> ListSchedule { get; set; }
         public List<TourImage> ListTourImage { get; set; }
+        public List<Ticket> TicketTour { get; set; }
     }
 }

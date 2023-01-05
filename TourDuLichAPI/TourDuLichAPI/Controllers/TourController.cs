@@ -94,7 +94,8 @@ namespace TourDuLichAPI.Controllers
                              VehicleId = a.VehicleId,
                              VehicleName = db.Vehicles.Where(x => x.VehicleId == a.VehicleId).FirstOrDefault().VahicleName ?? "",
                              ListSchedule = db.TourSchedules.Where(x => x.TourId == a.TourId).ToList(),
-                             ListTourImage = db.TourImages.Where(x => x.TourId == a.TourId).ToList()
+                             ListTourImage = db.TourImages.Where(x => x.TourId == a.TourId).ToList(),
+                             TicketTour = db.Tickets.Where(x => x.TourId == a.TourId).ToList()
                          }).FirstOrDefault();
             return new ResponseBase<TourDTO>()
             {
