@@ -211,6 +211,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TourController.cs" />
+    <Compile Include="Controllers\TourPrivateController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VoteTourController.cs" />
     <Compile Include="Global.asax.cs">
@@ -218,6 +219,7 @@
     </Compile>
     <Compile Include="Models\DTO\AccountDTO.cs" />
     <Compile Include="Models\DTO\OrderDTO.cs" />
+    <Compile Include="Models\DTO\TourPrivateDTO.cs" />
     <Compile Include="Models\DTO\TourDTO.cs" />
     <Compile Include="Models\Linq.designer.cs">
       <AutoGen>True</AutoGen>
@@ -291,6 +293,7 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Comment\" />
     <Folder Include="Views\Customer\" />
+    <Folder Include="Views\TourPrivate\" />
     <Folder Include="Views\VoteTour\" />
   </ItemGroup>
   <ItemGroup>

@@ -63,6 +63,9 @@ namespace TourDuLichAPI.Models
     partial void InsertTourImage(TourImage instance);
     partial void UpdateTourImage(TourImage instance);
     partial void DeleteTourImage(TourImage instance);
+    partial void InsertTourPrivate(TourPrivate instance);
+    partial void UpdateTourPrivate(TourPrivate instance);
+    partial void DeleteTourPrivate(TourPrivate instance);
     partial void InsertTourSchedule(TourSchedule instance);
     partial void UpdateTourSchedule(TourSchedule instance);
     partial void DeleteTourSchedule(TourSchedule instance);
@@ -75,7 +78,7 @@ namespace TourDuLichAPI.Models
     #endregion
 		
 		public LinqDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TicketTourConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TicketTourConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -189,6 +192,14 @@ namespace TourDuLichAPI.Models
 			get
 			{
 				return this.GetTable<TourImage>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TourPrivate> TourPrivates
+		{
+			get
+			{
+				return this.GetTable<TourPrivate>();
 			}
 		}
 		
@@ -2386,6 +2397,332 @@ namespace TourDuLichAPI.Models
 					this._Image = value;
 					this.SendPropertyChanged("Image");
 					this.OnImageChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TourPrivate")]
+	public partial class TourPrivate : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _TourPrivateId;
+		
+		private System.Nullable<int> _LocationFromId;
+		
+		private System.Nullable<int> _LocationToId;
+		
+		private System.Nullable<int> _Slot;
+		
+		private System.Nullable<int> _Type;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _ToDate;
+		
+		private System.Nullable<int> _HotelId;
+		
+		private System.Nullable<int> _VehicleId;
+		
+		private System.Nullable<int> _Status;
+		
+		private System.Nullable<double> _Price;
+		
+		private System.Nullable<int> _AccountId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTourPrivateIdChanging(int value);
+    partial void OnTourPrivateIdChanged();
+    partial void OnLocationFromIdChanging(System.Nullable<int> value);
+    partial void OnLocationFromIdChanged();
+    partial void OnLocationToIdChanging(System.Nullable<int> value);
+    partial void OnLocationToIdChanged();
+    partial void OnSlotChanging(System.Nullable<int> value);
+    partial void OnSlotChanged();
+    partial void OnTypeChanging(System.Nullable<int> value);
+    partial void OnTypeChanged();
+    partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnStartDateChanged();
+    partial void OnToDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnToDateChanged();
+    partial void OnHotelIdChanging(System.Nullable<int> value);
+    partial void OnHotelIdChanged();
+    partial void OnVehicleIdChanging(System.Nullable<int> value);
+    partial void OnVehicleIdChanged();
+    partial void OnStatusChanging(System.Nullable<int> value);
+    partial void OnStatusChanged();
+    partial void OnPriceChanging(System.Nullable<double> value);
+    partial void OnPriceChanged();
+    partial void OnAccountIdChanging(System.Nullable<int> value);
+    partial void OnAccountIdChanged();
+    #endregion
+		
+		public TourPrivate()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TourPrivateId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int TourPrivateId
+		{
+			get
+			{
+				return this._TourPrivateId;
+			}
+			set
+			{
+				if ((this._TourPrivateId != value))
+				{
+					this.OnTourPrivateIdChanging(value);
+					this.SendPropertyChanging();
+					this._TourPrivateId = value;
+					this.SendPropertyChanged("TourPrivateId");
+					this.OnTourPrivateIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationFromId", DbType="Int")]
+		public System.Nullable<int> LocationFromId
+		{
+			get
+			{
+				return this._LocationFromId;
+			}
+			set
+			{
+				if ((this._LocationFromId != value))
+				{
+					this.OnLocationFromIdChanging(value);
+					this.SendPropertyChanging();
+					this._LocationFromId = value;
+					this.SendPropertyChanged("LocationFromId");
+					this.OnLocationFromIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationToId", DbType="Int")]
+		public System.Nullable<int> LocationToId
+		{
+			get
+			{
+				return this._LocationToId;
+			}
+			set
+			{
+				if ((this._LocationToId != value))
+				{
+					this.OnLocationToIdChanging(value);
+					this.SendPropertyChanging();
+					this._LocationToId = value;
+					this.SendPropertyChanged("LocationToId");
+					this.OnLocationToIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Slot", DbType="Int")]
+		public System.Nullable<int> Slot
+		{
+			get
+			{
+				return this._Slot;
+			}
+			set
+			{
+				if ((this._Slot != value))
+				{
+					this.OnSlotChanging(value);
+					this.SendPropertyChanging();
+					this._Slot = value;
+					this.SendPropertyChanged("Slot");
+					this.OnSlotChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
+		public System.Nullable<int> Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ToDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ToDate
+		{
+			get
+			{
+				return this._ToDate;
+			}
+			set
+			{
+				if ((this._ToDate != value))
+				{
+					this.OnToDateChanging(value);
+					this.SendPropertyChanging();
+					this._ToDate = value;
+					this.SendPropertyChanged("ToDate");
+					this.OnToDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HotelId", DbType="Int")]
+		public System.Nullable<int> HotelId
+		{
+			get
+			{
+				return this._HotelId;
+			}
+			set
+			{
+				if ((this._HotelId != value))
+				{
+					this.OnHotelIdChanging(value);
+					this.SendPropertyChanging();
+					this._HotelId = value;
+					this.SendPropertyChanged("HotelId");
+					this.OnHotelIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VehicleId", DbType="Int")]
+		public System.Nullable<int> VehicleId
+		{
+			get
+			{
+				return this._VehicleId;
+			}
+			set
+			{
+				if ((this._VehicleId != value))
+				{
+					this.OnVehicleIdChanging(value);
+					this.SendPropertyChanging();
+					this._VehicleId = value;
+					this.SendPropertyChanged("VehicleId");
+					this.OnVehicleIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int")]
+		public System.Nullable<int> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Float")]
+		public System.Nullable<double> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountId", DbType="Int")]
+		public System.Nullable<int> AccountId
+		{
+			get
+			{
+				return this._AccountId;
+			}
+			set
+			{
+				if ((this._AccountId != value))
+				{
+					this.OnAccountIdChanging(value);
+					this.SendPropertyChanging();
+					this._AccountId = value;
+					this.SendPropertyChanged("AccountId");
+					this.OnAccountIdChanged();
 				}
 			}
 		}
